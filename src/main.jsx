@@ -6,6 +6,10 @@ import ModalProvider from "@context/ModalProvider";
 import { lazy } from "react";
 import { ThemeProvider } from "@mui/material";
 import them from "./configs/muiConfig";
+import RegisterPage from "@pages/auth/RegisterPage";
+import AuthLayout from "@pages/auth/AuthLayout";
+import LoginPage from "@pages/auth/LoginPage";
+import OTPVerifyPage from "@pages/auth/OTPVerifyPage";
 
 const HomePage = lazy(() => import("@pages/HomePage"));
 
@@ -16,6 +20,23 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        element: <AuthLayout />,
+        children: [
+          {
+            path: "/register",
+            element: <RegisterPage />,
+          },
+          {
+            path: "/login",
+            element: <LoginPage />,
+          },
+          {
+            path: "/verify-otp",
+            element: <OTPVerifyPage />,
+          }
+        ],
       },
     ],
   },
