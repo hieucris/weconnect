@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 
-const TextInput = ({ onChange, value, name, type = "text" }) => {
+const TextInput = ({ onChange, value, name, type = "text", error }) => {
   return (
     <TextField
       name={name}
@@ -16,6 +16,7 @@ const TextInput = ({ onChange, value, name, type = "text" }) => {
           className: "!p-0",
         },
       }}
+      error={error}
     />
   );
 };
