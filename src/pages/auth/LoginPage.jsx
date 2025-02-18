@@ -31,6 +31,7 @@ const LoginPage = () => {
     control,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm({
     resolver: yupResolver(formSchema),
   });
@@ -50,9 +51,17 @@ const LoginPage = () => {
           message: data.message,
         }),
       );
-      navigate("/verify-otp");
+      navigate("/verify-otp", { state: { email: getValues("email") } });
     }
-  }, [isSuccess, navigate, errors?.data?.message, isError, dispatch]);
+  }, [
+    isSuccess,
+    navigate,
+    errors?.data?.message,
+    isError,
+    dispatch,
+    getValues,
+    data,
+  ]);
   return (
     <div>
       <p className="mb-[6px] text-2xl text-dark-100">
