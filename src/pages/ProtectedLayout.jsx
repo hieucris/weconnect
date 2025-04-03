@@ -1,3 +1,4 @@
+import Header from "@components/Header";
 import { saveUserInfo } from "@redux/slices/authSlice";
 import { useAuthUserQuery } from "@services/rootApi";
 import { useEffect } from "react";
@@ -22,7 +23,12 @@ const ProtectedLayout = () => {
     return <Navigate to="/login" />;
   }
 
-  return <Outlet />;
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  );
 };
 
 export default ProtectedLayout;
